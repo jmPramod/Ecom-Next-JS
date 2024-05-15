@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const baseUrl = process.env.NEXT_PUBLIC_Base_url;
-
+// const baseUrl = process.env.NEXT_PUBLIC_Base_url;
+const baseUrl = 'https://mern1-wine.vercel.app';
 export const getProductsCategory = async () => {
   try {
+    console.log('baseUrl', baseUrl);
     const response = await axios.get(`${baseUrl}/products/get-categories`);
     return {
       message: response.data.message,

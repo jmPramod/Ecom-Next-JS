@@ -99,7 +99,7 @@ const Login = () => {
                 >
                   <path d="M14.707 4.293a1 1 0 0 1 1.414 1.414L10 11.414l-5.121-5.121a1 1 0 1 1 1.414-1.414L10 8.586l3.293-3.293a1 1 0 0 1 1.414 0z" />
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M2 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5zm1 2.586l6.293 6.293a1 1 0 0 0 1.414 0L17 7.586V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7.586z"
                     clip-rule="evenodd"
                   />
@@ -126,7 +126,7 @@ const Login = () => {
                   fill="currentColor"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
                     clip-rule="evenodd"
                   />
