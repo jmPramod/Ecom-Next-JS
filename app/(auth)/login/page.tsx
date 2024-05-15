@@ -7,17 +7,17 @@ import Image from 'next/image';
 
 import { FaBattleNet } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
-// import { loginSlice, userAction } from '.././../redux/slice/loginSlice';
 import { useDispatch } from 'react-redux';
-// import { AppDispatch, useAppSelector } from '.././../redux/store';
 import { login } from './../../../services/Api.Servicer';
 import { useSelector } from 'react-redux';
+import { loginSlice, userAction } from '../../../app/redux/slice/loginSlice';
+import { useAppSelector, AppDispatch } from '../../../app/redux/store';
 
 const baseUrl = process.env.NEXT_PUBLIC_Base_url;
 const Login = () => {
-  //   const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-  //   const products = useAppSelector((state) => state.userList);
+  const products = useAppSelector((state) => state.userList);
   const [loadingButton, setLoadingButton] = useState(false);
 
   const initialValuesForLogin = {
@@ -35,7 +35,7 @@ const Login = () => {
     setLoadingButton(true);
     let user = await login(values);
     if (user) {
-      //   dispatch(userAction.setUser(user?.data));
+      dispatch(userAction.setUser(user?.data));
       localStorage.setItem('User', JSON.stringify(user?.data));
       router.push('/');
     }

@@ -7,24 +7,26 @@ import { FaBattleNet } from 'react-icons/fa';
 import { FaBars } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
 import { BsCart4 } from 'react-icons/bs';
-// import { useAppSelector } from '../../../app/redux/store';
 import { useDispatch } from 'react-redux';
-// import { userAction } from '../../../app/redux/slice/loginSlice';
+import { useAppSelector } from '../../../app/redux/store';
+import { userAction } from '../../../app/redux/slice/loginSlice';
 interface PropsType {
   openMobView: () => void;
 }
 const Nav = (props: PropsType) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const router = useRouter();
-  // const products = useAppSelector((state) => state.userList);
+  const products = useAppSelector((state) => state.userList);
   const { openMobView } = props;
   const [showProfile, setShowProfile] = useState(false);
-  // useEffect(() => {}, [products]);
+  useEffect(() => {
+    console.log('products', products);
+  }, [products]);
   const handleProfile = () => {
     setShowProfile(!showProfile);
   };
   const handleLogout = () => {
-    // dispatch(userAction.logout());
+    dispatch(userAction.logout());
     localStorage.removeItem('User');
   };
   return (
@@ -58,7 +60,7 @@ const Nav = (props: PropsType) => {
             </Link>
           </li>
 
-          {/* {products.user != null &&
+          {products.user != null &&
           products.user != undefined &&
           typeof products.user === 'object' &&
           Object.keys(products.user).length > 0 ? (
@@ -87,11 +89,11 @@ const Nav = (props: PropsType) => {
                 </div>
               )}
             </div>
-          ) : ( */}
-          <li className="text-sm sm:text-xl font-medium hover:text-red-600 border px-2 hover:border-red-600">
-            <Link href={'/login'}>login</Link>
-          </li>
-          {/* )} */}
+          ) : (
+            <li className="text-sm sm:text-xl font-medium hover:text-red-600 border px-2 hover:border-red-600">
+              <Link href={'/login'}>login</Link>
+            </li>
+          )}
         </ul>
         {/* mobile icon */}
         <FaBars className="text-xl md:hidden" onClick={openMobView} />
