@@ -2,15 +2,10 @@ import axios from 'axios';
 
 // const baseUrl = process.env.NEXT_PUBLIC_Base_url;
 const baseUrl = 'https://mern1-wine.vercel.app';
-
 export const getProductsCategory = async () => {
   try {
     console.log('baseUrl', baseUrl);
-    const response = await axios.get(`${baseUrl}/products/get-categories`, {
-      headers: {
-        'Access-Control-Allow-Origin': 'https://mern1-wine.vercel.app',
-      },
-    });
+    const response = await axios.get(`${baseUrl}/products/get-categories`);
     return {
       message: response.data.message,
       data: response.data.data,
@@ -34,12 +29,7 @@ export const sortProducts = async (
 ) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/products/sort?sortBy=${sortName}&minNmax=${minMax}&limit=${limit}`,
-      {
-        headers: {
-          'Access-Control-Allow-Origin': 'https://mern1-wine.vercel.app',
-        },
-      }
+      `${baseUrl}/products/sort?sortBy=${sortName}&minNmax=${minMax}&limit=${limit}`
     );
     return {
       message: response.data.message,
@@ -56,14 +46,9 @@ export const sortProducts = async (
     }
   }
 };
-
 export const login = async (payload: any) => {
   try {
-    const response = await axios.post(`${baseUrl}/api/login`, payload, {
-      headers: {
-        'Access-Control-Allow-Origin': 'https://mern1-wine.vercel.app',
-      },
-    });
+    const response = await axios.post(`${baseUrl}/api/login`, payload);
     return {
       message: response.data.message,
       data: response.data.data,
@@ -90,12 +75,7 @@ export const filterProducts = async (
 ) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/products/filter?minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category}&minRating=${minRating}&discountPercentage=${discountPercentage}&brand=${brand}`,
-      {
-        headers: {
-          'Access-Control-Allow-Origin': 'https://mern1-wine.vercel.app',
-        },
-      }
+      `${baseUrl}/products/filter?minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category}&minRating=${minRating}&discountPercentage=${discountPercentage}&brand=${brand}`
     );
     return {
       message: response.data.message,
@@ -111,16 +91,10 @@ export const filterProducts = async (
     }
   }
 };
-
 export const getSingleProducts = async (id?: string) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/products/get-single-product/${id}`,
-      {
-        headers: {
-          'Access-Control-Allow-Origin': 'https://mern1-wine.vercel.app',
-        },
-      }
+      `${baseUrl}/products/get-single-product/${id}`
     );
     return {
       message: response.data.message,
