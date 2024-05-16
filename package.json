@@ -2,6 +2,7 @@
   "name": "ecom",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://mern1-wine.vercel.app",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
