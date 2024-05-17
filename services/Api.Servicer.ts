@@ -7,6 +7,12 @@ export const getProductsCategory = async () => {
     console.log('baseUrl', baseUrl);
     const response = await axios.get(`${baseUrl}/products/get-categories`, {
       withCredentials: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*', // Set appropriate origin if possible
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers':
+          'Origin, X-Requested-With, Content-Type, Accept',
+      },
     });
     return {
       message: response.data.message,
@@ -34,6 +40,12 @@ export const sortProducts = async (
       `${baseUrl}/products/sort?sortBy=${sortName}&minNmax=${minMax}&limit=${limit}`,
       {
         withCredentials: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*', // Set appropriate origin if possible
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers':
+            'Origin, X-Requested-With, Content-Type, Accept',
+        },
       }
     );
     return {
@@ -57,6 +69,12 @@ export const login = async (payload: any) => {
       `${baseUrl}/api/login`,
       {
         withCredentials: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*', // Set appropriate origin if possible
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers':
+            'Origin, X-Requested-With, Content-Type, Accept',
+        },
       },
       payload
     );
@@ -89,6 +107,12 @@ export const filterProducts = async (
       `${baseUrl}/products/filter?minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category}&minRating=${minRating}&discountPercentage=${discountPercentage}&brand=${brand}`,
       {
         withCredentials: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*', // Set appropriate origin if possible
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers':
+            'Origin, X-Requested-With, Content-Type, Accept',
+        },
       }
     );
     return {
@@ -108,8 +132,15 @@ export const filterProducts = async (
 export const getSingleProducts = async (id?: string) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/products/get-single-product/${id}`, {
-        withCredentials: true
+      `${baseUrl}/products/get-single-product/${id}`,
+      {
+        withCredentials: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*', // Set appropriate origin if possible
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers':
+            'Origin, X-Requested-With, Content-Type, Accept',
+        },
       }
     );
     return {
