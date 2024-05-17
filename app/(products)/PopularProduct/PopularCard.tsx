@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Card from './Card';
-// import { ProductType } from '../../utils/types';
-
 import CardSkeliton from './CardSkeliton';
 import { ProductType } from './../../utils/types';
+
 const ProductCard = (props: any) => {
   const { data, title, loading } = props;
 
@@ -28,41 +27,42 @@ const ProductCard = (props: any) => {
       items: 1,
     },
   };
+
   useEffect(() => {
-    console.log('props,', data);
-  }, [data, props]);
+    console.log('props:', data);
+  }, [data]);
+
   return (
     <div className="w-[97%] px-5 mx-auto bg-[#f1f4f9]">
       <h1 className="my-5 text-3xl font-bold">{title}</h1>
-      <Carousel
-        responsive={responsive}
-        swipeable={true}
-        draggable={false}
-        ssr={true}
-        infinite={true}
-        autoPlay={false}
-        keyBoardControl={true}
-        customTransition="ease-in-out .5"
-        transitionDuration={500}
-        centerMode={false}
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
-      >
-        {loading ? (
-          <div className="flex gap-[10px] mx-[10px] items-center justify-between w-full">
-            {Array.from({ length: 5 })?.map((_, index) => (
-              <CardSkeliton key={index} />
-            ))}
-          </div>
-        ) : !data ? (
-          ''
-        ) : (
-          data &&
-          data?.map((val: any, index: number) => (
+      {loading ? (
+        <div className="flex gap-[10px] mx-[10px] items-center justify-between w-full">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <CardSkeliton key={index} />
+          ))}
+        </div>
+      ) : !Array.isArray(data) || data.length === 0 ? (
+        <p>No data available</p>
+      ) : (
+        <Carousel
+          responsive={responsive}
+          swipeable={true}
+          draggable={false}
+          ssr={true}
+          infinite={true}
+          autoPlay={false}
+          keyBoardControl={true}
+          customTransition="ease-in-out .5"
+          transitionDuration={500}
+          centerMode={false}
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-40-px"
+        >
+          {data.map((val: ProductType, index: number) => (
             <Card product={val} key={index} />
-          ))
-        )}
-      </Carousel>
+          ))}
+        </Carousel>
+      )}
     </div>
   );
 };

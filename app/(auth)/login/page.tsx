@@ -34,7 +34,9 @@ const Login = () => {
   const handleSubmitForLogin = async (values: any) => {
     setLoadingButton(true);
     let user = await login(values);
-    if (user) {
+    if (user && Object.keys(user).length !== 0) {
+      console.log('user?.data', user?.data);
+
       dispatch(userAction.setUser(user?.data));
       localStorage.setItem('User', JSON.stringify(user?.data));
       router.push('/');
