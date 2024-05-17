@@ -5,15 +5,7 @@ const baseUrl = 'https://mern1-wine.vercel.app';
 export const getProductsCategory = async () => {
   try {
     console.log('baseUrl', baseUrl);
-    const response = await axios.get(`${baseUrl}/products/get-categories`, {
-      withCredentials: true,
-      headers: {
-        'Access-Control-Allow-Origin': '*', // Set appropriate origin if possible
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers':
-          'Origin, X-Requested-With, Content-Type, Accept',
-      },
-    });
+    const response = await axios.get(`${baseUrl}/products/get-categories`);
     return {
       message: response.data.message,
       data: response.data.data,
@@ -37,16 +29,7 @@ export const sortProducts = async (
 ) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/products/sort?sortBy=${sortName}&minNmax=${minMax}&limit=${limit}`,
-      {
-        withCredentials: true,
-        headers: {
-          'Access-Control-Allow-Origin': '*', // Set appropriate origin if possible
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers':
-            'Origin, X-Requested-With, Content-Type, Accept',
-        },
-      }
+      `${baseUrl}/products/sort?sortBy=${sortName}&minNmax=${minMax}&limit=${limit}`
     );
     return {
       message: response.data.message,
@@ -67,15 +50,7 @@ export const login = async (payload: any) => {
   try {
     const response = await axios.post(
       `${baseUrl}/api/login`,
-      {
-        withCredentials: true,
-        headers: {
-          'Access-Control-Allow-Origin': '*', // Set appropriate origin if possible
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers':
-            'Origin, X-Requested-With, Content-Type, Accept',
-        },
-      },
+
       payload
     );
     return {
@@ -104,16 +79,7 @@ export const filterProducts = async (
 ) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/products/filter?minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category}&minRating=${minRating}&discountPercentage=${discountPercentage}&brand=${brand}`,
-      {
-        withCredentials: true,
-        headers: {
-          'Access-Control-Allow-Origin': '*', // Set appropriate origin if possible
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers':
-            'Origin, X-Requested-With, Content-Type, Accept',
-        },
-      }
+      `${baseUrl}/products/filter?minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category}&minRating=${minRating}&discountPercentage=${discountPercentage}&brand=${brand}`
     );
     return {
       message: response.data.message,
@@ -132,16 +98,7 @@ export const filterProducts = async (
 export const getSingleProducts = async (id?: string) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/products/get-single-product/${id}`,
-      {
-        withCredentials: true,
-        headers: {
-          'Access-Control-Allow-Origin': '*', // Set appropriate origin if possible
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers':
-            'Origin, X-Requested-With, Content-Type, Accept',
-        },
-      }
+      `${baseUrl}/products/get-single-product/${id}`
     );
     return {
       message: response.data.message,
